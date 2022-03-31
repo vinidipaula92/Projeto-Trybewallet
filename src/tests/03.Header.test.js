@@ -1,10 +1,10 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
-import { response as mockData, initialStateHeader } from './mocks/mockData';
+import React from 'react';
 import Wallet from '../pages/Wallet';
-import { renderWithRouterAndStore } from './helpers/testConfig';
-
 import { TOTAL_FIELD_TEST_ID } from './helpers/constants';
+import { renderWithRouterAndStore } from './helpers/testConfig';
+import { initialStateHeader, response as mockData } from './mocks/mockData';
+
 
 const apiResponse = Promise.resolve({
   json: () => Promise.resolve(mockData),
