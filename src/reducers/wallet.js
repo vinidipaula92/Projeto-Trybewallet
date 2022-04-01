@@ -18,6 +18,10 @@ function wallet(state = initialState, action) {
       ...state,
       error: action.error,
     };
+  case 'ADD_EXPENSE':
+    return [...state.expenses, action.value];
+  case 'DELETE_EXPENSE':
+    return state.filter((element) => element !== action.value);
   default:
     return state;
   }

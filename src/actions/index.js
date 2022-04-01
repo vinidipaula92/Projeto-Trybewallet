@@ -30,3 +30,6 @@ export function walletSuccess() {
     }
   };
 }
+
+export const addExpense = (value) => ({ type: 'ADD_EXPENSE', value });
+export const deleteExpense = (value) => ({ type: 'DELETE_EXPENSE', value });

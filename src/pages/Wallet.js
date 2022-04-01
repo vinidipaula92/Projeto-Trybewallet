@@ -3,8 +3,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { walletSuccess } from '../actions';
 import Header from './Header';
+import Table from './Table';
 
 class Wallet extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pagamento: ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'],
+      despesa: ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
+    };
+  }
+
   componentDidMount() {
     // requisição da api
     const { getApi } = this.props;
@@ -13,8 +23,7 @@ class Wallet extends React.Component {
 
   render() {
     const { currencies } = this.props;
-    const pagamento = [' ', 'Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
-    const despesa = [' ', 'Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
+    const { pagamento, despesa } = this.state;
     return (
       <div>
         <Header />
@@ -61,6 +70,7 @@ class Wallet extends React.Component {
             }
           </select>
         </label>
+        <Table />
       </div>
     );
   }
