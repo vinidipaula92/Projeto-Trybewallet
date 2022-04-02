@@ -31,5 +31,22 @@ export function walletSuccess() {
   };
 }
 
+export const receiveExpenseSuccess = (value) => ({
+  type: 'RECEIVE_EXPENSE_SUCCESS',
+  expense: value,
+});
+
+export function expenseAction(state) {
+  return async (dispatch) => {
+    dispatch(requestCurrency());
+    try {
+      const response = await getApi();
+      dispatch(receiveExpenseSuccess({ ...state, exchangeRates: response }));
+    } catch (error) {
+      dispatch(receiveCurrencyFailure(error));
+    }
+  };
+}
+
 export const addExpense = (value) => ({ type: 'ADD_EXPENSE', value });
 export const deleteExpense = (value) => ({ type: 'DELETE_EXPENSE', value });

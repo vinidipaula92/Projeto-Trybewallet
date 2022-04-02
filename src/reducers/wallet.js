@@ -4,6 +4,7 @@ import { RECEIVE_CURRENCY_FAILURE, RECEIVE_CURRENCY_SUCESS } from '../actions';
 const initialState = {
   currencies: [],
   expenses: [],
+  ask: 0,
 };
 
 function wallet(state = initialState, action) {
@@ -18,8 +19,11 @@ function wallet(state = initialState, action) {
       ...state,
       error: action.error,
     };
-  case 'ADD_EXPENSE':
-    return [...state.expenses, action.value];
+  case 'RECEIVE_EXPENSE_SUCCESS':
+    return {
+      ...state,
+      expenses: [...state.expenses, action.expense],
+    };
   case 'DELETE_EXPENSE':
     return state.filter((element) => element !== action.value);
   default:
