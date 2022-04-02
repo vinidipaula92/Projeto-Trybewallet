@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class Table extends Component {
   render() {
     const { allExpenses } = this.props;
-    // console.log(allExpenses);
     return (
       <table>
         <thead>

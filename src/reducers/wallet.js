@@ -4,7 +4,6 @@ import { RECEIVE_CURRENCY_FAILURE, RECEIVE_CURRENCY_SUCESS } from '../actions';
 const initialState = {
   currencies: [],
   expenses: [],
-  ask: 0,
 };
 
 function wallet(state = initialState, action) {

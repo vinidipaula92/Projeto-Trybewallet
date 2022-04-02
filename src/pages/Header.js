@@ -6,18 +6,14 @@ import { walletSuccess } from '../actions/index';
 class Header extends React.Component {
   render() {
     const { userName, getExpenses } = this.props;
-    // console.log(getExpenses);
 
     const saveExpenses = getExpenses.map((element) => {
-      // console.log(element);
       const { value, currency, exchangeRates } = element;
       const cotacao = exchangeRates[currency].ask;
-      // console.log(cotacao);
       const valor = value * cotacao;
       return valor;
     });
     const total = saveExpenses.reduce((acc, curr) => acc + curr, 0);
-    // console.log(total);
     return (
       <div>
         <header>
