@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 class Table extends Component {
   render() {
     const { allExpenses } = this.props;
+    console.log(allExpenses);
     return (
       <table>
         <thead>
           <tr>
-            <th>Descricao</th>
+            <th>Descrição</th>
             <th>Tag</th>
             <th>Método de pagamento</th>
             <th>Valor</th>
@@ -31,7 +32,7 @@ class Table extends Component {
                       .value.replace('.', ',') : expense.value
                   }
                 </td>
-                <td>{expense.currency}</td>
+                <td>{expense.exchangeRates.name}</td>
               </tr>
             ))
           }
