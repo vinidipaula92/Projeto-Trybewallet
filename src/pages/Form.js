@@ -48,7 +48,7 @@ class Form extends React.Component {
         <label htmlFor="value">
           Valor:
           <input
-            type="number"
+            type="text"
             data-testid="value-input"
             name="value"
             value={ value }

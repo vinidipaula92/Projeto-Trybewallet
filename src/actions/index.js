@@ -48,3 +48,7 @@ export function expenseAction(state) {
     }
   };
 }
+
+export const deleteExpense = (id) => ({ type: 'DELETE_EXPENSE', id });
+
+export const editExpense = (id) => ({ type: 'EDIT_EXPENSE', id });

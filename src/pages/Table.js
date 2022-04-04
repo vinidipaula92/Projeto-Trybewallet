@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { deleteExpense } from '../actions/index';
 
 class Table extends Component {
   render() {
-    const { allExpenses } = this.props;
+    const { allExpenses, deleteIndex } = this.props;
     return (
       <table>
         <thead>
@@ -27,7 +28,7 @@ class Table extends Component {
                 <td>{expense.method}</td>
                 <td>
                   {
-                    expense.value.length === 2 ? `${expense.value}.00` : expense.value
+                    expense.value.length > 0 ? `${expense.value}.00` : expense.value
                   }
                 </td>
                 <td>
@@ -44,10 +45,22 @@ class Table extends Component {
                   Real
                 </td>
                 <td>
-                  <button data-testid="delete-btn" type="button">Editar</button>
-                </td>
-                <td>
-                  <button data-testid="edit-btn" type="button">Excluir</button>
+                  <button
+                    data-testid="edit-btn"
+                    type="button"
+                    onClick={ this.handleEdit }
+                  >
+                    Editar despesa
+
+                  </button>
+                  <button
+                    data-testid="delete-btn"
+                    type="button"
+                    onClick={ () => deleteIndex(expense.id) }
+                  >
+                    Excluir
+
+                  </button>
                 </td>
               </tr>
             ))
@@ -62,8 +75,13 @@ const mapStateToProps = (state) => ({
   allExpenses: state.wallet.expenses,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  deleteIndex: (id) => dispatch(deleteExpense(id)),
+});
+
 Table.propTypes = {
   allExpenses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteIndex: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
