@@ -12,8 +12,8 @@ class Form extends React.Component {
       value: '',
       description: '',
       currency: '',
-      method: ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'],
-      tag: ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
+      method: '',
+      tag: '',
     };
   }
 
@@ -31,7 +31,7 @@ class Form extends React.Component {
 
   handleRegister = () => {
     const { addExpense, expenses } = this.props;
-    addExpense({ ...this.state, id: expenses.length });
+    addExpense({ id: expenses.length, ...this.state });
     this.setState({
       value: 0,
       description: '',
@@ -73,6 +73,7 @@ class Form extends React.Component {
             name="currency"
             id="currency"
             value={ currency }
+            required
             onChange={ this.handleChange }
           >
             {
@@ -94,7 +95,6 @@ class Form extends React.Component {
             name="method"
             id="method"
             value={ method }
-            multiple={ false }
             onChange={ this.handleChange }
           >
             {
@@ -116,8 +116,6 @@ class Form extends React.Component {
             name="tag"
             id="tag"
             value={ tag }
-            required
-            multiple={ false }
             onChange={ this.handleChange }
           >
             {

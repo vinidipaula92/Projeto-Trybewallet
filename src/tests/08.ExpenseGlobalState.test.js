@@ -1,8 +1,8 @@
+import { screen } from '@testing-library/react';
 import React from 'react';
-import { screen  } from '@testing-library/react';
-import { response as mockData, initialStateWithExpenses } from './mocks/mockData';
 import Wallet from '../pages/Wallet';
 import { renderWithRouterAndStore } from './helpers/testConfig';
+import { initialStateWithExpenses, response as mockData } from './mocks/mockData';
 
 const apiResponse = Promise.resolve({
   json: () => Promise.resolve(mockData),

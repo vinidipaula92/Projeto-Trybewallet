@@ -33,6 +33,7 @@ export function walletSuccess() {
 
 export const receiveExpenseSuccess = (value) => ({
   type: 'RECEIVE_EXPENSE_SUCCESS',
+  ...value,
   expense: value,
 });
 
@@ -47,6 +48,3 @@ export function expenseAction(state) {
     }
   };
 }
-
-export const addExpense = (value) => ({ type: 'ADD_EXPENSE', value });
-export const deleteExpense = (value) => ({ type: 'DELETE_EXPENSE', value });

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class Table extends Component {
   render() {
     const { allExpenses } = this.props;
-    console.log(allExpenses);
     return (
       <table>
         <thead>
@@ -28,11 +27,28 @@ class Table extends Component {
                 <td>{expense.method}</td>
                 <td>
                   {
-                    expense.value.length === 2 ? expense
-                      .value.replace('.', ',') : expense.value
+                    expense.value.length === 2 ? `${expense.value}.00` : expense.value
                   }
                 </td>
-                <td>{expense.exchangeRates.name}</td>
+                <td>
+                  {expense.exchangeRates[expense.currency].name.split('/')[0]}
+                </td>
+                <td>
+                  {Number(expense.exchangeRates[expense.currency].ask).toFixed(2)}
+                </td>
+                <td>
+                  {(expense.exchangeRates[expense.currency]
+                    .ask * expense.value).toFixed(2)}
+                </td>
+                <td>
+                  Real
+                </td>
+                <td>
+                  <button data-testid="delete-btn" type="button">Editar</button>
+                </td>
+                <td>
+                  <button data-testid="edit-btn" type="button">Excluir</button>
+                </td>
               </tr>
             ))
           }
