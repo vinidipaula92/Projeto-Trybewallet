@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { walletSuccess } from '../actions/index';
+import '../css/Header.css';
 
 class Header extends React.Component {
   render() {
@@ -16,10 +17,10 @@ class Header extends React.Component {
     const total = saveExpenses.reduce((acc, curr) => acc + curr, 0);
     return (
       <div>
-        <header>
-          <p data-testid="email-field">{userName}</p>
-          <span data-testid="total-field">{total.toFixed(2)}</span>
-          <p data-testid="header-currency-field">BRL</p>
+        <header className="header-container">
+          <p data-testid="email-field" className="username">{userName}</p>
+          <span data-testid="total-field" className="price">{total.toFixed(2)}</span>
+          <p data-testid="header-currency-field" className="moeda">BRL</p>
         </header>
       </div>
     );
