@@ -21,28 +21,19 @@
     25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
 }
 
+.container {
+  padding: 1rem;
+  width: 100%;
+}
 
 .header-container {
   align-items: center;
-  background-color: #fafafa;
-  box-shadow: var(--shadow-elevation-medium);
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: Courier, monospace;
   justify-content: space-between;
-  padding: 0.5rem;
-}
-
-.username {
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.moeda {
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.price {
-  font-size: 1.2rem;
-  font-weight: 700;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 1rem;
+  width: 100%;
 }

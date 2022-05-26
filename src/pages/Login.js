@@ -21,43 +21,46 @@ class Login extends React.Component {
       return true;
     }
     return false;
-  }
+  };
 
   render() {
     const { loginSucess } = this.props;
     const { email, senha } = this.state;
     return (
-      <div className="container-login">
-        <h1 className="title-login">Welcome to the Trybe Wallet</h1>
-        <h2 className="title-login">Faça seu login</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          data-testid="email-input"
-          onChange={ (e) => this.setState({ email: e.target.value }) }
-          className="input-login"
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          data-testid="password-input"
-          onChange={ (e) => this.setState({ senha: e.target.value }) }
-          className="input-login"
-        />
-        <Link to="/carteira" style={ { textDecoration: 'none' } }>
-          <button
-            type="button"
-            disabled={ this.handleDisable() }
-            onClick={ () => loginSucess(email, senha) }
-            className="button-login"
-            style={ this
-              .handleDisable()
-              ? { backgroundColor: '#ccc' } : { backgroundColor: '#305cec' } }
-          >
-            Entrar
-
-          </button>
-        </Link>
+      <div className=" container">
+        <div className="container-login">
+          <h1 className="title-login">Welcome to the Trybe Wallet</h1>
+          <h2 className="title-login">Faça seu login</h2>
+          <input
+            type="email"
+            placeholder="Email"
+            data-testid="email-input"
+            onChange={(e) => this.setState({ email: e.target.value })}
+            className="input-login"
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            data-testid="password-input"
+            onChange={(e) => this.setState({ senha: e.target.value })}
+            className="input-login"
+          />
+          <Link to="/carteira">
+            <button
+              type="button"
+              disabled={this.handleDisable()}
+              onClick={() => loginSucess(email, senha)}
+              className="button-login"
+              style={
+                this.handleDisable()
+                  ? { backgroundColor: '#ccc' }
+                  : { backgroundColor: '#4caf50' }
+              }
+            >
+              Entrar
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

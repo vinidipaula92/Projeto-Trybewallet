@@ -16,17 +16,19 @@ class Header extends React.Component {
     });
     const total = saveExpenses.reduce((acc, curr) => acc + curr, 0);
     return (
-      <div>
+      <div className="container">
         <header className="header-container">
           <p data-testid="email-field" className="username">
-            { `Usuário: ${userName}
+            {`Usuário: ${userName}
             `}
           </p>
           <p className="price">
             Despesa total: R$
             <span data-testid="total-field">{total.toFixed(2)}</span>
           </p>
-          <p data-testid="header-currency-field" className="moeda">Moeda: BRL</p>
+          <p data-testid="header-currency-field" className="moeda">
+            Moeda: BRL
+          </p>
         </header>
       </div>
     );

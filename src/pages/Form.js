@@ -27,7 +27,7 @@ class Form extends React.Component {
     this.setState({
       [target.name]: target.value,
     });
-  }
+  };
 
   handleRegister = () => {
     const { addExpense, expenses } = this.props;
@@ -39,7 +39,7 @@ class Form extends React.Component {
       method: '',
       tag: '',
     });
-  }
+  };
 
   render() {
     const { currencies } = this.props;
@@ -47,16 +47,16 @@ class Form extends React.Component {
     const pagamento = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const despesa = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
-      <div className="form">
-        <div className="container-form">
+      <div className="container-form">
+        <div className="form-container-input">
           <label htmlFor="value" className="label-form">
             Valor:
             <input
               type="text"
               data-testid="value-input"
               name="value"
-              value={ value }
-              onChange={ this.handleChange }
+              value={value}
+              onChange={this.handleChange}
               className="input-form"
             />
           </label>
@@ -67,8 +67,8 @@ class Form extends React.Component {
               data-testid="description-input"
               name="description"
               id="description"
-              value={ description }
-              onChange={ this.handleChange }
+              value={description}
+              onChange={this.handleChange}
               className="input-form"
             />
           </label>
@@ -78,21 +78,14 @@ class Form extends React.Component {
               data-testid="currency-input"
               name="currency"
               id="currency"
-              value={ currency }
+              value={currency}
               required
-              onChange={ this.handleChange }
+              onChange={this.handleChange}
               className="input-form"
             >
-              {
-                currencies.map((coin, index) => (
-                  <option
-                    key={ index }
-                  >
-                    {coin}
-
-                  </option>
-                ))
-              }
+              {currencies.map((coin, index) => (
+                <option key={index}>{coin}</option>
+              ))}
             </select>
           </label>
           <label htmlFor="method" className="label-form">
@@ -101,20 +94,13 @@ class Form extends React.Component {
               data-testid="method-input"
               name="method"
               id="method"
-              value={ method }
-              onChange={ this.handleChange }
+              value={method}
+              onChange={this.handleChange}
               className="input-form"
             >
-              {
-                pagamento.map((pay, index) => (
-                  <option
-                    key={ index }
-                  >
-                    {pay}
-
-                  </option>
-                ))
-              }
+              {pagamento.map((pay, index) => (
+                <option key={index}>{pay}</option>
+              ))}
             </select>
           </label>
           <label htmlFor="tag" className="label-form">
@@ -123,32 +109,24 @@ class Form extends React.Component {
               data-testid="tag-input"
               name="tag"
               id="tag"
-              value={ tag }
-              onChange={ this.handleChange }
+              value={tag}
+              onChange={this.handleChange}
               className="input-form"
             >
-              {
-                despesa.map((expense, index) => (
-                  <option
-                    key={ index }
-                  >
-                    {expense}
-
-                  </option>
-                ))
-              }
+              {despesa.map((expense, index) => (
+                <option key={index}>{expense}</option>
+              ))}
             </select>
           </label>
+          <button
+            type="button"
+            data-testid="add-button"
+            onClick={this.handleRegister}
+            className="button-form"
+          >
+            Adicionar despesa
+          </button>
         </div>
-        <button
-          type="button"
-          data-testid="add-button"
-          onClick={ this.handleRegister }
-          className="button-form"
-        >
-          Adicionar despesa
-
-        </button>
       </div>
     );
   }
