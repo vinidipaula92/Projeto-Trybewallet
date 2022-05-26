@@ -18,9 +18,15 @@ class Header extends React.Component {
     return (
       <div>
         <header className="header-container">
-          <p data-testid="email-field" className="username">{userName}</p>
-          <span data-testid="total-field" className="price">{total.toFixed(2)}</span>
-          <p data-testid="header-currency-field" className="moeda">BRL</p>
+          <p data-testid="email-field" className="username">
+            { `Usuário: ${userName}
+            `}
+          </p>
+          <p className="price">
+            Despesa total: R$
+            <span data-testid="total-field">{total.toFixed(2)}</span>
+          </p>
+          <p data-testid="header-currency-field" className="moeda">Moeda: BRL</p>
         </header>
       </div>
     );

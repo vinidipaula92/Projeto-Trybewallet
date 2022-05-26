@@ -29,7 +29,6 @@ class Login extends React.Component {
     return (
       <div className="container-login">
         <h1 className="title-login">Welcome to the Trybe Wallet</h1>
-        💰
         <h2 className="title-login">Faça seu login</h2>
         <input
           type="email"

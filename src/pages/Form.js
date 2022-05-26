@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { expenseAction, walletSuccess } from '../actions';
 import '../css/Form.css';
-import Table from './Table';
 
 class Form extends React.Component {
   constructor(props) {
@@ -150,7 +149,6 @@ class Form extends React.Component {
           Adicionar despesa
 
         </button>
-        <Table />
       </div>
     );
   }
