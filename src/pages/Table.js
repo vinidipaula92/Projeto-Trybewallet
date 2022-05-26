@@ -8,67 +8,65 @@ class Table extends Component {
   render() {
     const { allExpenses, deleteIndex } = this.props;
     return (
-      <table>
-        <thead>
-          <tr className="table-container">
-            <th className="table-name">Descrição</th>
-            <th className="table-name">Tag</th>
-            <th className="table-name">Método de pagamento</th>
-            <th className="table-name">Valor</th>
-            <th className="table-name">Moeda</th>
-            <th className="table-name">Câmbio utilizado</th>
-            <th className="table-name">Valor convertido</th>
-            <th className="table-name">Moeda de conversão</th>
-            <th className="table-name">Editar/Excluir</th>
-          </tr>
-          {
-            allExpenses.map((expense) => (
-              <tr key={ expense.id } className="table-container">
-                <td className="description">{expense.description}</td>
-                <td className="tag">{expense.tag}</td>
-                <td className="method">{expense.method}</td>
-                <td className="value">
-                  {
-                    expense.value.length > 0 ? `${expense.value}.00` : expense.value
-                  }
-                </td>
-                <td className="currency">
-                  {expense.exchangeRates[expense.currency].name.split('/')[0]}
-                </td>
-                <td className="currency">
-                  {Number(expense.exchangeRates[expense.currency].ask).toFixed(2)}
-                </td>
-                <td className="currency">
-                  {(expense.exchangeRates[expense.currency]
-                    .ask * expense.value).toFixed(2)}
-                </td>
-                <td className="real">
-                  Real
-                </td>
-                <td>
-                  <button
-                    data-testid="edit-btn"
-                    type="button"
-                    className="edit-btn"
-                  >
-                    Editar despesa
-
-                  </button>
-                  <button
-                    data-testid="delete-btn"
-                    type="button"
-                    onClick={ () => deleteIndex(expense.id) }
-                    className="delete-btn"
-                  >
-                    Excluir
-
-                  </button>
-                </td>
+      <div className="m-auto">
+        <h3 className="m-auto title">Tabela de despesas</h3>
+        <div className="table-responsive table-container col-12 m-auto">
+          <table className="content-table table align-middle table-css">
+            <thead>
+              <tr className="align-middle table-title">
+                <th scope="col">Descrição</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Método de pagamento</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Moeda</th>
+                <th scope="col">Câmbio utilizado</th>
+                <th scope="col">Valor convertido</th>
+                <th scope="col">Moeda de conversão</th>
+                <th scope="col">Excluir</th>
               </tr>
-            ))
-          }
-        </thead>
-      </table>
+            </thead>
+            <tbody className="align-middle table-body">
+              {allExpenses.map((expense) => (
+                <tr key={expense.id} className="active-row">
+                  <td>{expense.description}</td>
+                  <td>{expense.tag}</td>
+                  <td>{expense.method}</td>
+                  <td>
+                    {expense.value.length > 0
+                      ? `${expense.value}.00`
+                      : expense.value}
+                  </td>
+                  <td>
+                    {expense.exchangeRates[expense.currency].name.split('/')[0]}
+                  </td>
+                  <td>
+                    {Number(
+                      expense.exchangeRates[expense.currency].ask,
+                    ).toFixed(2)}
+                  </td>
+                  <td>
+                    {(
+                      expense.exchangeRates[expense.currency].ask *
+                      expense.value
+                    ).toFixed(2)}
+                  </td>
+                  <td>Real</td>
+                  <td>
+                    <button
+                      data-testid="delete-btn"
+                      type="button"
+                      onClick={() => deleteIndex(expense.id)}
+                      className="delete-btn"
+                    >
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     );
   }
 }
